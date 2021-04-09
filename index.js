@@ -10,6 +10,8 @@ const app = express();
 var key = "awwek2348908ujijkzxcnasrewuier";
 
 app.set('key', key);
+// use the express-static middleware
+app.use(express.static("public"))
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
@@ -146,6 +148,6 @@ app.get('/notas/:dni', async (req, res) => {
 	}
 })
 
-app.listen(3001, () => {
+app.listen(process.env.PORT || 3001, () => {
 	console.log('server is running on port 3001')
 });
